@@ -14,3 +14,12 @@ if (!localStorage.getItem('deck_id')) {
 
 deck_id = localStorage.getItem('deck_id')
 
+function drawTwoCards() {
+    fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=2`)
+        .then(res => res.json())
+        .then(result => {
+            document.getElementById('playerOneCard').src = result.cards[0].image
+            document.getElementById('playerTwoCard').src = result.cards[1].image
+            console.log(result.remaining)
+        })
+}
