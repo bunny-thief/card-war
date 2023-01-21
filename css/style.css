@@ -14,29 +14,39 @@
 }
 
 .clear {
-	clear: both;
+     clear: both;
 }
 
 /******************************************
 /* BASE STYLES
 /*******************************************/
 
-body {
-
-}
+body {}
 
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-header {
 
-}
-
-footer {
-
+#playingArea,
+#result {
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+#playingArea {
+     padding-top: 50px;
+}
+
+#drawTwoCards {
+     margin: 0 20px;
+}
+
+#result {
+     margin-top: 25px;
+}
