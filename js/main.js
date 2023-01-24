@@ -2,17 +2,17 @@ document.getElementById('drawTwoCards').addEventListener('click', drawTwoCards)
 
 let deck_id = ''
 
-if (!localStorage.getItem('deck_id')) {
-
+if (!localStorage.getItem('deck_id') || localStorage.getItem('deck_id') == 'null') {
     fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
         .then(res => res.json())
         .then(result => {
-            localStorage.setItem('deck_id', deck_id)
-            console.log(deck_id)
+            localStorage.setItem('deck_id', result.deck_id)
+            console.log(`New deck added to localStorage: ${result.deck_id}`)
         })
+} else {
+    deck_id = localStorage.getItem('deck_id')
+    console.log(`Deck loaded from localStorage: ${deck_id}`)
 }
-
-deck_id = localStorage.getItem('deck_id')
 
 function drawTwoCards() {
     fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=2`)
